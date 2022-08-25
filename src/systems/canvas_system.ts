@@ -1,7 +1,7 @@
 import { defineSystem, defineQuery } from "bitecs";
 
 import { number_to_color } from "../utilities";
-import { BACKGROUND_COLOR, FINISH_FADE_ALPHA, FINISH_TEXT_COLOR } from "../constants";
+import { BACKGROUND_COLOR, FINISH_FADE_ALPHA, TEXT_COLOR } from "../constants";
 import { FinishScreen, StartScreen } from "../components";
 
 function draw_text(ctx: CanvasRenderingContext2D, text: string, color: string, size: number, is_bold: boolean, point_x: number, point_y: number) {
@@ -31,7 +31,7 @@ export function create_canvas_system(ctx: CanvasRenderingContext2D, width: numbe
 
 export function create_finish_screen_system(ctx: CanvasRenderingContext2D, width: number, height: number) {
     const finish_fade_color: string = "rgba(0, 0, 0, " + String(FINISH_FADE_ALPHA) +")";
-    const finish_text_color: string = number_to_color(FINISH_TEXT_COLOR);
+    const finish_text_color: string = number_to_color(TEXT_COLOR);
 
     const finish_query = defineQuery([FinishScreen]);
     return defineSystem(world => {
@@ -53,7 +53,7 @@ export function create_finish_screen_system(ctx: CanvasRenderingContext2D, width
 }
 
 export function create_start_screen_system(ctx: CanvasRenderingContext2D, width: number, height: number) {
-    const text_color: string = number_to_color(FINISH_TEXT_COLOR);
+    const text_color: string = number_to_color(TEXT_COLOR);
     const start_query = defineQuery([StartScreen]);
     return defineSystem(world => {
         const entitites = start_query(world);

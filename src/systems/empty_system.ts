@@ -1,7 +1,7 @@
 import { defineQuery, defineSystem } from "bitecs";
 
 import { Tile, StartScreen } from "../components";
-import { TILE_PER_STEP } from "../constants";
+import { TILES_PER_STEP } from "../constants";
 import { add_tiles } from "../tiles";
 
 const all_tiles_query = defineQuery([Tile]);
@@ -13,7 +13,7 @@ export const empty_system = defineSystem(world => {
         // there are no start entity, so, we are in the game
         const all_tiles = all_tiles_query(world);
         if(all_tiles.length == 0) {
-            add_tiles(TILE_PER_STEP, world);
+            add_tiles(TILES_PER_STEP, world);
         }
     }
 

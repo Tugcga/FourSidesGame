@@ -4,7 +4,7 @@ import { Tile, Position, Ready, Target, Speed, Acceleration, ContiniousMove, Fil
 import { is_code_arrow } from "./utilities";
 import { add_tiles } from "./tiles";
 import { score_init } from "./score";
-import { TILES_COUNT, START_MOVE_SPEED, MOVE_ACCELERATION, TILE_PER_STEP } from "./constants";
+import { TILES_COUNT, START_MOVE_SPEED, MOVE_ACCELERATION, TILES_PER_STEP } from "./constants";
 
 const all_tiles_query = defineQuery([Tile]);
 const ready_tiles_query = defineQuery([Tile, Position, Ready, Not(FilterReady), Not(AlphaIncrease), Not(AlphaDecrease)]);
@@ -109,7 +109,7 @@ export function start_moving(world: IWorld, axis: number, ready_tiles: Array<num
         }
 
         // at the trivial move, add new tiles
-        add_tiles(TILE_PER_STEP, world);
+        add_tiles(TILES_PER_STEP, world);
     }
     else {
         var audio = new Audio("click_sound.ogg");
